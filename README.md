@@ -184,8 +184,8 @@ const colors = {
 
 ## 👤 Autor
 
-**Tu Nombre** — Proyecto Final de Grado Superior DAW  
-[GitHub](https://github.com/tu-usuario)
+Cristian Lopez Gonzalez — Proyecto Final de Grado Superior DAW  
+[GitHub](https://github.com/tu-usuario)](https://github.com/CristianLopezGonzalez)
 
 ---
 
