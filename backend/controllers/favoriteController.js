@@ -7,7 +7,7 @@ class favoriteController {
             const existeFav = await Favorito.findOne({where:{usuario_id: user_id,paleta_id: paleta_id}})
 
             if(existeFav){
-                return res.status(400).send({
+                return res.status(400).json({
                     success: false,
                     message: 'Favorito already exists',
                 })
