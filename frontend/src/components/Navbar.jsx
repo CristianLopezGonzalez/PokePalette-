@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Home, Compass, BookMarked, Sun, Moon, User, LogOut } from 'lucide-react'
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
     const { darkMode, toggleDark, navOpen: isOpen, setNavOpen } = useTheme()
