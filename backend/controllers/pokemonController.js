@@ -62,11 +62,29 @@ class pokemonController {
     }
     static async getRandomPokemon(req, res) {
         try {
-            const randomId = Math.floor(Math.random() * 1025) + 1
-            req.params.name = String(randomId)
-            return pokemonController.getPokemonPalette(req, res)
+            let pokemon = null;
+            let attempts = 0;
+            const maxAttempts = 50;
+
+            while (!pokemon && attempts < maxAttempts) {
+                const randomId = Math.floor(Math.random() * 1025) + 1;
+                req.params.name = String(randomId);
+
+                try {
+                    const result = await pokemonController.getPokemonPalette(req, res);
+                    pokemon = result;
+                    return result;
+                } catch (error) {
+                    attempts++;
+                    console.log(`Intento ${attempts}: Pokémon con ID ${randomId} no encontrado, buscando otro...`);
+                }
+            }
+
+            res.status(404).json({ error: 'No se pudo encontrar un Pokémon válido después de varios intentos' });
+
         } catch (error) {
-            res.status(500).json({ error: 'Internal Server Error' })
+            console.error('Error en getRandomPokemon:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
         }
     }
 }
